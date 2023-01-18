@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заполнение информации</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="wrapper">
+        <div style="top: -100px" class="error"></div>
+        {% if page_title %}
+            <h4 class="page-title">Запись уже существует</h4>
+        {% endif %}
+        <form class="form-ul" action="/fill_doc" method="post">
+            <div class="form-ul__container">
+                <input name="telephone" type="text" placeholder="Введите номер телефон" value="{{ data[0] }}">
+                <input name="email" type="email" placeholder="Введите электронную почту организации:" value="{{ data[1] }}">
+                <input name="domen" type="text" placeholder="Введите адрес сайта организации c www:" value="{{ data[2] }}">
+                <input name="bank" type="text" placeholder="Введите номер расчетного счета" value="{{ data[3] }}">
+                <input name="okpo" type="text" placeholder="Введите ОКПО" value="{{ data[4] }}">
+                <button type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='form-ul-validator.js')}}"></script>
+</body>
+</html>
